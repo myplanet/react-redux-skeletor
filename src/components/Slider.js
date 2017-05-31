@@ -7,6 +7,36 @@
 import React from 'react';
 import ReactSlider from 'react-slider';
 
+class CustomReactSlider extends ReactSlider {
+  render () {
+    var state = this.state;
+    var props = this.props;
+
+    var offset = this.tempArray;
+    var value = state.value;
+    var l = value.length;
+    for (var i = 0; i < l; i++) {
+      offset[i] = this._calcOffset(value[i], i);
+    }
+
+    var bars = !props.customDisabled && props.withBars ? this._renderBars(offset) : null;
+    var handles = props.customDisabled ? '' : this._renderHandles(offset);
+
+    return (
+      React.createElement('div', {
+          ref: 'slider',
+          style: {position: 'relative'},
+          className: props.className + (props.customDisabled ? ' disabled' : ''),
+          onMouseDown: !!props.customDisabled ? this._onSliderMouseDown : null,
+          onClick: !!props.customDisabled ? this._onSliderClick : null
+        },
+        bars,
+        handles
+      )
+    );
+  }
+}
+
 /**
  * React slider component.
  */
@@ -112,10 +142,10 @@ const Slider = React.createClass({
             </div>
           }
 
-          <ReactSlider withBars value={initialValues} onChange={this.onChange} disabled={this.props.readonly}>
+          <CustomReactSlider withBars value={initialValues} onChange={this.onChange} customDisabled={this.props.readonly}>
             <div className="my-handle"></div>
             <div className="my-handle"></div>
-          </ReactSlider>
+          </CustomReactSlider>
 
           {!this.props.withInputControl &&
             <div className="slider-values clearfix">
