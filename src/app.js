@@ -1,5 +1,3 @@
-const $ = jQuery // assuming this app is on a Drupal page with jQuery
-
 import React from 'react';
 
 import { render } from 'react-dom';

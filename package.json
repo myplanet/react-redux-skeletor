@@ -6,12 +6,13 @@
     "node": ">4.0.0"
   },
   "dependencies": {
-    "browser-sync": "~2.7.4",
     "accounting": "0.4.1",
+    "axios": "^0.16.1",
     "babel-plugin-transform-object-rest-spread": "6.8.0",
     "babel-preset-es2015": "6.14.0",
     "babel-preset-react": "6.11.1",
     "babelify": "7.3.0",
+    "browser-sync": "~2.7.4",
     "browserify": "13.1.0",
     "del": "2.2.2",
     "gulp": "3.9.1",

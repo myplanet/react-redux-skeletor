@@ -1,4 +1,4 @@
-const $ = jQuery // assuming this app is on a Drupal page with jQuery
+import axios from 'axios';
 
 /**
  * App init action.
@@ -34,12 +34,12 @@ function getData1() {
  return function (dispatch, getState) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        $.ajax({
+        axios({
             url: '/data1.json',
-            type: 'GET',
+            method: 'GET',
             timeout: 5000
-          }).then(data => {
-            dispatch(getData1Success(data));
+          }).then(response => {
+            dispatch(getData1Success(response.data));
             resolve(true);
         });
       }, 5000);
@@ -51,12 +51,12 @@ function getData2() {
   return function (dispatch, getState) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        $.ajax({
+        axios({
           url: '/data2.json',
-          type: 'GET',
+          method: 'GET',
           timeout: 5000
-        }).then(data => {
-          dispatch(getData2Success(data));
+        }).then(response => {
+          dispatch(getData2Success(response.data));
           resolve(true);
         });
       }, 3000);
