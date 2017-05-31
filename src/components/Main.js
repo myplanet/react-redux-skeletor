@@ -2,7 +2,15 @@ import React from 'react';
 
 const Main = React.createClass({
   componentWillMount: function() {
-      this.props.getData()
+    this.props.init();
+  },
+
+  filterData: function (e) {
+    this.props.filterData(e.target.value);
+  },
+
+  onButtonClick: function(id) {
+    this.props.deleteUser(id);
   },
 
   render() {
@@ -13,13 +21,19 @@ const Main = React.createClass({
       )
     }
 
+    let app = this;
+
     // All data loaded, so render it.
     return (
       <div>
+          Search: <input type="text" onKeyUp={this.filterData}/>
           {this.props.data.data.map(function(item, index) {
               return (
                   <div key={index}>
-                      <p>{item.title}</p>
+                      <p>{item.name}</p>
+                      <p>{item.sname}</p>
+                      <button onClick={(e) => { console.log(item); app.onButtonClick(item.id) }}>x</button>
+                      <hr/>
                   </div>
               )
           })}
