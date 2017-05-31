@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import data from './data';
-import filteredData from './filteredData';
+import filters from './filters';
 
 const rootReducer = combineReducers({
   data: data,
-  filteredData: filteredData,
+  filters: filters,
 });
 
 export default rootReducer;

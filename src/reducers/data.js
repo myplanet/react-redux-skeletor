@@ -2,6 +2,7 @@ const defaultState = {
   data: null,
   data1: null,
   data2: null,
+  dataFiltered: null,
   isFetching: false,
   isLoaded: false,
   error: null,
@@ -13,7 +14,6 @@ function data(state = defaultState, action) {
       return {
         ...state, // ES7 object spread
         data: action.data,
-        isLoaded: true,
         isFetching: false
       }
     case 'GET_DATA1_SUCCESS' :
@@ -36,6 +36,12 @@ function data(state = defaultState, action) {
         ...state,
         isFetching: false,
         error: action.error
+      }
+    case 'DATA_FILTERED' :
+      return {
+        ...state,
+        isLoaded: true,
+        dataFiltered: action.data
       }
     default:
       return state;

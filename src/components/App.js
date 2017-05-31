@@ -6,7 +6,7 @@ import Main from './Main';
 function mapStateToProps(state, ownProps) {
   return {
     data: state.data,
-    filteredData: state.filteredData,
+    filters: state.filters,
   }
 }
 

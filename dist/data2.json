@@ -1,30 +1,37 @@
 [
   {
     "id": 1,
-    "name": "Justin"
+    "name": "Justin",
+    "age": 32
   },
   {
     "id": 2,
-    "name": "Rafael"
+    "name": "Rafael",
+    "age": 27
   },
   {
     "id": 3,
-    "name": "Pavel"
+    "name": "Pavel",
+    "age": 28
   },
   {
     "id": 4,
-    "name": "Anastasia"
+    "name": "Anastasia",
+    "age": 19
   },
   {
     "id": 5,
-    "name": "Alexey"
+    "name": "Alexey",
+    "age": 30
   },
   {
     "id": 6,
-    "name": "Anna"
+    "name": "Anna",
+    "age": 19
   },
   {
     "id": 7,
-    "name": "Yoshi"
+    "name": "Yoshi",
+    "age": 37
   }
 ]

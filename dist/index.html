@@ -1,11 +1,63 @@
 
 <html>
 <head>
-  <script
-    src="https://code.jquery.com/jquery-1.12.4.min.js"
-    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-    crossorigin="anonymous"></script>
   <script type="text/javascript" src="/build/app.js" async defer></script>
+  <style>
+    .slider {
+      width: 100%;
+      max-width: 500px;
+      height: 25px;
+    }
+
+    .handle {
+      font-size: 0.9em;
+      text-align: center;
+      background-color: black;
+      color: white;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .handle.active {
+      background-color: grey;
+    }
+
+    .bar {
+      position: relative;
+    }
+
+    .bar.bar-0 {
+      background: grey;
+    }
+
+    .bar.bar-1 {
+      background: grey;
+    }
+
+    .bar.bar-2 {
+      background: grey;
+    }
+
+    .slider .bar {
+      top: 6px;
+      height: 2px;
+    }
+
+    .slider .handle {
+      top: 1px;
+      width: 12px;
+      height: 12px;
+      line-height: 25px;
+    }
+
+    .sliderValueMin {
+      display: inline-block;
+    }
+
+    .sliderValueMax {
+      float: right;
+    }
+  </style>
 </head>
 <body>
   Hello world!

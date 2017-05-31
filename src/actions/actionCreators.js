@@ -12,6 +12,10 @@ export function init() {
       dispatch(getData2())
     ]).then(() => {
       dispatch(dataMerge());
+    }).then(() => {
+      dispatch(filterOptions());
+    }).then(() => {
+      dispatch(dataFilter());
     });
   }
 }
@@ -23,8 +27,6 @@ export function deleteUser(id) {
     let datanew = state.data.data.reduce((acc, elem) => {
       if (elem.id !== id) acc.push(elem); return acc;
     }, []);
-
-    console.log(datanew);
 
     dispatch(getDataSuccess(datanew));
   }
@@ -42,7 +44,7 @@ function getData1() {
             dispatch(getData1Success(response.data));
             resolve(true);
         });
-      }, 5000);
+      }, 2000);
     });
   }
 }
@@ -59,7 +61,7 @@ function getData2() {
           dispatch(getData2Success(response.data));
           resolve(true);
         });
-      }, 3000);
+      }, 1000);
     });  
   }
 }
@@ -112,7 +114,51 @@ function getDataFail(error) {
   }
 }
 
-export function filterData(searchTerm) {
+function filterOptions () {
+  return function (dispatch, getState) {
+    const state = getState();
+    let filterOptions = {
+      min: 99,
+      max: 0
+    };
+
+    state.data.data.forEach(elem => {
+      filterOptions.min = elem.age < filterOptions.min ? elem.age : filterOptions.min;
+      filterOptions.max = elem.age > filterOptions.max ? elem.age : filterOptions.max;
+    });
+    
+    dispatch({
+      type: 'FILTER_AGE_OPTIONS',
+      filterOptions
+    });
+  }
+}
+
+export function filterValue (values) {
+  return function (dispatch, getState) {
+    dispatch({
+      type: 'FILTER_AGE_VALUES',
+      values
+    });
+
+    dispatch(dataFilter());
+  }
+}
+
+function dataFilter () {
+  return function (dispatch, getState) {
+    let state = getState();
+
+    let data = state.data.data.filter(elem => elem.age >= state.filters.values.min && elem.age <= state.filters.values.max);
+
+    dispatch({
+      type: 'DATA_FILTERED',
+      data
+    });
+  }
+}
+
+export function filterData (searchTerm) {
   return function (dispatch, getState) {
     let state = getState();
 
