@@ -1,0 +1,17 @@
+[
+  {
+    "title": "title 1",
+    "description": "Some description 1...",
+    "featured": true
+  },
+  {
+    "title": "title 2",
+    "description": "Some description 2...",
+    "featured": true
+  },
+  {
+    "title": "title 3",
+    "description": "Some description 3...",
+    "featured": false
+  }
+]

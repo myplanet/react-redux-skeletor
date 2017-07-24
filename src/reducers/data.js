@@ -23,6 +23,7 @@ function data(state = defaultState, action) {
       return {
         ...state,
         isFetching: false,
+        isLoaded: true,
         error: action.error
       }
     default:

@@ -19,6 +19,7 @@
     "gulp-sourcemaps": "1.6.0",
     "gulp-uglify": "2.0.0",
     "gulp-watch": "4.3.10",
+    "jsonschema": "^1.1.1",
     "moment": "2.15.1",
     "react": "15.3.2",
     "react-collapsible": "1.2.0",
