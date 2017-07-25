@@ -14,8 +14,10 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
+var env = require('gulp-env');
 var del = require('del');
-var sourcemaps = require('gulp-sourcemaps')
+var sourcemaps = require('gulp-sourcemaps');
+var envify = require('envify/custom');
 
 /**
  * Deletes the existing output.
@@ -28,7 +30,7 @@ gulp.task('clean', function(){
  * Browserify and Uglify the Babel output for production use.
  */
 gulp.task('build',['clean'], function(){
-  process.env.NODE_ENV = 'production';
+  process.env.NODE_ENV = 'development';
 
   const browserifyOptions = {
     entries: ['./src/app.js'],
@@ -52,6 +54,8 @@ gulp.task('build',['clean'], function(){
  * Browserify the Babel output for development.
  */
 gulp.task('build-dev', ['clean'], function () {
+  process.env.NODE_ENV = 'development';
+
   const browserifyOptions = {
     entries: ['./src/app.js'],
     debug: true,
@@ -63,6 +67,9 @@ gulp.task('build-dev', ['clean'], function () {
   }
   const stream = browserify(browserifyOptions)
     .transform(babelify.configure(babelifyOptions))
+    .transform(envify({
+      NODE_ENV: 'development'
+    }));
 
   return stream.bundle()
     .pipe(source('app.js'))

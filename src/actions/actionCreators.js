@@ -4,8 +4,6 @@ import dataSchema from "../schema/dataSchema";
 import {Validator} from "jsonschema";
 let v = new Validator();
 
-//v.addSchema(dataSchema, '/data');
-
 /**
  * Get all data from API.
  */
@@ -24,7 +22,6 @@ export function getData() {
             acc.push(error.stack);
             return acc;
           }, []).join(', ');
-          console.log(errors);
           dispatch(getDataFail(errors));
         }
         else {

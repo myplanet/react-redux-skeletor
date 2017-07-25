@@ -1,9 +1,10 @@
 import React from 'react';
+import Card from './Card'
 
-const Main = React.createClass({
-  componentWillMount: function() {
+class Main extends React.Component {
+  componentWillMount() {
       this.props.getData()
-  },
+  }
 
   render() {
     // App is busy loading Data from API
@@ -25,17 +26,12 @@ const Main = React.createClass({
       <div>
           {this.props.data.data.map(function(item, index) {
               return (
-                  <div key={index}>
-                      <h2>{item.title}</h2>
-                      <p>{item.featured ? 'featured' : ''}</p>
-                      <p>{item.description}</p>
-                      <hr/>
-                  </div>
+                  <Card key={index} {...item}/>
               )
           })}
       </div>
     )
   }
-});
+};
 
 export default Main;

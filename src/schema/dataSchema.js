@@ -4,10 +4,10 @@ export default {
   "items": {
     "type": "object",
     "properties": {
-      "title" : {"type": "string"},
+      //"title" : {"type": "string"},
       "description" : {"type": "string"},
       "featured" : {"type": "boolean"}
     },
-    "required": ["title", "description"]
+    "required": ["description"]
   }
 }
