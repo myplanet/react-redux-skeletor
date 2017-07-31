@@ -7,7 +7,7 @@ export function getData() {
   return function (dispatch, getState) {
     dispatch(getDataPending())
     $.ajax({
-        url: '/api/react_redux_skeletor/data',
+        url: '/data.json',
         type: 'GET',
         timeout: 5000
       })
