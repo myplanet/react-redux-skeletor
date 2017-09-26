@@ -1,22 +1,40 @@
-const $ = jQuery // assuming this app is on a Drupal page with jQuery
+import axios from 'axios'
+import Ajv from 'ajv'
+import { apiEndpoints } from '../constants/endpoints'
+
+import attendeesSchema from '../../schemas/attendeesSchema'
+
+let ajv = Ajv({allErrors: true});
 
 /**
  * Get all data from API.
  */
 export function getData() {
   return function (dispatch, getState) {
+    let endpointId = 'attendees'
+    let endpoint = apiEndpoints[endpointId]
     dispatch(getDataPending())
-    $.ajax({
-        url: '/api/react_redux_skeletor/data',
-        type: 'GET',
-        timeout: 5000
-      })
-      .done(function(response) {
-        dispatch(getDataSuccess(response))
-      })
-      .error(function(jqXHR, textStatus, errorThrown) {
-        dispatch(getDataFail(textStatus))
-      })
+
+    return axios({
+      url: endpoint.url,
+      method: endpoint.method,
+      timeout: endpoint.timeout
+    })
+    .then(res => {
+      // AJV
+      var validate = ajv.compile(attendeesSchema)
+      var valid = validate(res.data)
+
+      if (!valid) {
+        dispatch(getDataFail('Error fetching the data', validate.errors))
+      }
+      else {
+        dispatch(getDataSuccess(res.data.attendees))
+      }
+    })
+    .catch(err => {
+      getDataFail('Error fetching the data')
+    });
   }
 }
 
@@ -33,7 +51,7 @@ function getDataSuccess(data) {
   }
 }
 
-function getDataFail(error) {
+function getDataFail(error, errorLog) {
   return {
     type: 'GET_DATA_FAIL',
     error

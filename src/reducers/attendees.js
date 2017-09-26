@@ -5,11 +5,11 @@ const defaultState = {
   error: null,
 }
 
-function data(state = defaultState, action) {
+function attendees(state = defaultState, action) {
   switch(action.type) {
     case 'GET_DATA_SUCCESS' :
       return {
-        ...state, // ES7 object spread
+        ...state,
         data: action.data,
         isLoaded: true,
         isFetching: false
@@ -30,4 +30,4 @@ function data(state = defaultState, action) {
   }
 }
 
-export default data;
+export default attendees;

@@ -1,11 +1,9 @@
-const $ = jQuery // assuming this app is on a Drupal page with jQuery
-
 import React from 'react';
 
 import { render } from 'react-dom';
 
 // Import Components
-import App from './components/App';
+import App from './containers/App';
 
 
 import { Provider } from 'react-redux';

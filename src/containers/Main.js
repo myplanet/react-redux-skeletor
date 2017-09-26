@@ -1,4 +1,5 @@
 import React from 'react';
+import AttendeesList from '../components/AttendeesList/AttendeesList'
 
 const Main = React.createClass({
   componentWillMount: function() {
@@ -7,7 +8,7 @@ const Main = React.createClass({
 
   render() {
     // App is busy loading Data from API
-    if (this.props.data.isLoaded === false) {
+    if (this.props.attendees.isLoaded === false) {
       return (
         <div>Loading...</div>
       )
@@ -16,13 +17,9 @@ const Main = React.createClass({
     // All data loaded, so render it.
     return (
       <div>
-          {this.props.data.data.map(function(item, index) {
-              return (
-                  <div key={index}>
-                      <p>{item.title}</p>
-                  </div>
-              )
-          })}
+        <AttendeesList
+          data={this.props.attendees.data}
+        />
       </div>
     )
   }
