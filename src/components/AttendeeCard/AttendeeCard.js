@@ -10,6 +10,9 @@ class AttendeeCard extends Component {
         {field_presenter[0]['value'] &&
           <span className="-tag">Presenting</span>
         }
+        <div className="-icon">
+          <img src="https://openclipart.org/image/2400px/svg_to_png/247324/abstract-user-flat-1.png"/>
+        </div>
         <h3>{`${field_firstname[0]['value']} ${field_lastname[0]['value']}`}</h3>
         <p className="-bio">{field_bio[0]['value']}</p>
       </div>

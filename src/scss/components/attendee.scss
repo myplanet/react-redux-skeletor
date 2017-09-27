@@ -1,0 +1,31 @@
+.attendee-card {
+  position: relative;
+  background-color: #fff;
+  max-width: 400px;
+  margin: 50px auto;
+  box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  text-align: center;
+
+  .-icon {
+    width: 100px;
+    height: 100px;
+    margin: 50px auto;
+    background-color: #ccc;
+    border-radius: 50%;
+    background-image: url(https://openclipart.org/image/2400px/svg_to_png/247324/abstract-user-flat-1.png);
+
+    img {
+      width: 100px;
+      height: 100px;
+      opacity: 0.5;
+    }
+  }
+
+  .-tag {
+    background-color: #000066;
+    border-radius: 4px;
+    padding: 7px 10px;
+    color: white;
+  }
+}
