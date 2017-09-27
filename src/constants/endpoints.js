@@ -9,5 +9,11 @@ export const apiEndpoints = {
     method: 'GET',
     timeout: 10000,
     schema: 'attendeesSchema.json'
+  },
+  attendee: {
+    url: `${ config.apiURL }/attendee`,
+    method: 'GET',
+    timeout: 10000,
+    schema: 'attendeeSchema.json'
   }
 }

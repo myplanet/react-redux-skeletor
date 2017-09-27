@@ -5,7 +5,7 @@ import Main from './Main';
 
 function mapStateToProps(state, ownProps) {
   return {
-    attendees: state.attendees,
+    attendee: state.attendee,
   }
 }
 

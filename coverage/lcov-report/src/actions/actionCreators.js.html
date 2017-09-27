@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">45% </span>
+        <span class="strong">81.25% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>9/20</span>
+        <span class='fraction'>13/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">55.56% </span>
+        <span class="strong">71.43% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>5/9</span>
+        <span class='fraction'>5/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">45% </span>
+        <span class="strong">81.25% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/20</span>
+        <span class='fraction'>13/16</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -106,32 +106,14 @@
 61
 62
 63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+64</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -151,41 +133,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -215,16 +173,19 @@
 import Ajv from 'ajv'
 import { apiEndpoints } from '../constants/endpoints'
 &nbsp;
+import attendeeSchema from '../../schemas/attendeeSchema'
 import attendeesSchema from '../../schemas/attendeesSchema'
 &nbsp;
-let ajv = Ajv({allErrors: true});
+let ajv = new Ajv({allErrors: true});
+&nbsp;
+ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
 &nbsp;
 /**
  * Get all data from API.
  */
 export function getData() {
   return function (dispatch, getState) {
-    let endpointId = 'attendees'
+    let endpointId = 'attendee'
     let endpoint = apiEndpoints[endpointId]
     dispatch(getDataPending())
 &nbsp;
@@ -234,45 +195,21 @@ export function getData() {
       timeout: endpoint.timeout
     })
     .then(res =&gt; {
-      // // AJV
-      // var validate = ajv.compile(attendeesSchema)
-      // var valid = validate(res.data)
-      // if (!valid) {
-      //   console.log(validate.errors)
-      //   let dataUpdated = fixErrors(res.data, validate.errors)
-      //
-      //   console.log(dataUpdated);
-      //
-      //   var valid1 = validate(dataUpdated)
-      //   console.log(valid1)
-      //   console.log(validate.errors)
-      //   if (!valid1) {
-      //     getDataFail('Error fetching the data', validate.errors)
-      //   }
-      // }
+      // AJV
+      let validate = ajv.compile(attendeeSchema);
+      let valid = validate(res.data)
 &nbsp;
-      dispatch(getDataSuccess(res.data.attendees))
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (!valid) {
+<span class="cstat-no" title="statement not covered" >        dispatch(getDataFail('Error fetching the data', validate.errors))</span>
+      }
+      else {
+        dispatch(getDataSuccess(res.data))
+      }
     })
     .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; {
 <span class="cstat-no" title="statement not covered" >      getDataFail('Error fetching the data')</span>
     });
   }
-}
-&nbsp;
-function <span class="fstat-no" title="function not covered" >fixErrors(</span>data, errors) {
-<span class="cstat-no" title="statement not covered" >  return data;</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  errors.forEach(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    console.log(error)</span>
-<span class="cstat-no" title="statement not covered" >    if (error.params.type == "integer") {</span>
-      let path = <span class="cstat-no" title="statement not covered" >error.dataPath.substr(1);</span>
-      let key = <span class="cstat-no" title="statement not covered" >path.split('[')[0];</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >      console.log(`let ${key} = data; console.log(${path});`);</span>
-<span class="cstat-no" title="statement not covered" >      data1 = eval(`let ${key} = data; console.log(${path});`);</span>
-<span class="cstat-no" title="statement not covered" >      console.log(data1);</span>
-    }
-  })
 }
 &nbsp;
 function getDataPending() {
@@ -301,7 +238,7 @@ function <span class="fstat-no" title="function not covered" >getDataFail(</span
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Sep 26 2017 01:46:00 GMT+0200 (CEST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 27 2017 09:39:54 GMT+0200 (CEST)
 </div>
 </div>
 <script src="../../prettify.js"></script>

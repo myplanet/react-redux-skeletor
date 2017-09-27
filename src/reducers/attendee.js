@@ -5,7 +5,7 @@ const defaultState = {
   error: null,
 }
 
-function attendees(state = defaultState, action) {
+function attendee(state = defaultState, action) {
   switch(action.type) {
     case 'GET_DATA_SUCCESS' :
       return {
@@ -30,4 +30,4 @@ function attendees(state = defaultState, action) {
   }
 }
 
-export default attendees;
+export default attendee;

@@ -1,55 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1506383160721" clover="3.2.0">
-  <project timestamp="1506383160721" name="All files">
-    <metrics statements="33" coveredstatements="22" conditionals="9" coveredconditionals="6" methods="13" coveredmethods="9" elements="55" coveredelements="37" complexity="0" loc="33" ncloc="33" packages="6" files="6" classes="6">
+<coverage generated="1506497994996" clover="3.2.0">
+  <project timestamp="1506497994997" name="All files">
+    <metrics statements="26" coveredstatements="23" conditionals="9" coveredconditionals="8" methods="9" coveredmethods="7" elements="44" coveredelements="38" complexity="0" loc="26" ncloc="26" packages="6" files="7" classes="7">
       <package name="schemas">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="attendeeSchema.js" path="/Users/yoshisavenko/projects/DrupalCon/schemas/attendeeSchema.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
         <file name="attendeesSchema.js" path="/Users/yoshisavenko/projects/DrupalCon/schemas/attendeesSchema.js">
           <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         </file>
       </package>
       <package name="src.actions">
-        <metrics statements="20" coveredstatements="9" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="5"/>
+        <metrics statements="16" coveredstatements="13" conditionals="2" coveredconditionals="1" methods="7" coveredmethods="5"/>
         <file name="actionCreators.js" path="/Users/yoshisavenko/projects/DrupalCon/src/actions/actionCreators.js">
-          <metrics statements="20" coveredstatements="9" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="5"/>
-          <line num="7" count="1" type="stmt"/>
-          <line num="13" count="1" type="stmt"/>
-          <line num="14" count="1" type="stmt"/>
-          <line num="15" count="1" type="stmt"/>
+          <metrics statements="16" coveredstatements="13" conditionals="2" coveredconditionals="1" methods="7" coveredmethods="5"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
           <line num="16" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
           <line num="18" count="1" type="stmt"/>
-          <line num="41" count="1" type="stmt"/>
-          <line num="44" count="0" type="stmt"/>
-          <line num="50" count="0" type="stmt"/>
-          <line num="52" count="0" type="stmt"/>
-          <line num="53" count="0" type="stmt"/>
-          <line num="54" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="55" count="0" type="stmt"/>
-          <line num="56" count="0" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="21" count="1" type="stmt"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="31" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="35" count="1" type="stmt"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="45" count="1" type="stmt"/>
+          <line num="51" count="1" type="stmt"/>
           <line num="58" count="0" type="stmt"/>
-          <line num="59" count="0" type="stmt"/>
-          <line num="60" count="0" type="stmt"/>
-          <line num="66" count="1" type="stmt"/>
-          <line num="72" count="1" type="stmt"/>
-          <line num="79" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.actions.tests">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="attendeeMock.js" path="/Users/yoshisavenko/projects/DrupalCon/src/actions/tests/attendeeMock.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         </file>
       </package>
       <package name="src.components.AttendeeCard">
-        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <file name="AttendeeCard.js" path="/Users/yoshisavenko/projects/DrupalCon/src/components/AttendeeCard/AttendeeCard.js">
-          <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-          <line num="6" count="3" type="stmt"/>
-          <line num="8" count="3" type="stmt"/>
-          <line num="21" count="2" type="stmt"/>
-        </file>
-      </package>
-      <package name="src.components.AttendeesList">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <file name="AttendeesList.js" path="/Users/yoshisavenko/projects/DrupalCon/src/components/AttendeesList/AttendeesList.js">
-          <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-          <line num="9" count="1" type="stmt"/>
-          <line num="13" count="2" type="stmt"/>
-          <line num="25" count="1" type="stmt"/>
+          <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
         </file>
       </package>
       <package name="src.constants">
@@ -61,7 +57,7 @@
       </package>
       <package name="src.reducers">
         <metrics statements="6" coveredstatements="6" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
-        <file name="attendees.js" path="/Users/yoshisavenko/projects/DrupalCon/src/reducers/attendees.js">
+        <file name="attendee.js" path="/Users/yoshisavenko/projects/DrupalCon/src/reducers/attendee.js">
           <metrics statements="6" coveredstatements="6" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
           <line num="1" count="1" type="stmt"/>
           <line num="9" count="4" type="cond" truecount="4" falsecount="0"/>

@@ -4,15 +4,15 @@ import AttendeeCard from './AttendeeCard'
 
 test('Attendee Card renders name', () => {
   let data = {
-    id: 1,
-    firstName: 'John',
-    lastName: 'Smith',
-    bio: 'bio...'
+    field_presenter: [{"value" : true}],
+    field_firstname: [{"value" : "John"}],
+    field_lastname: [{"value" : "Smith"}],
+    field_bio: [{"value" : "bio..."}]
   }
 
   const wrapper = render(
     <AttendeeCard
-      {...data}
+      data={data}
     />
   );
 

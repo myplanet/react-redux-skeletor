@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class AttendeesCard extends Component {
+class AttendeeCard extends Component {
   render() {
-    let {firstName, lastName, dorgId, bio, presenter} = this.props
+    let {field_firstname, field_lastname, field_bio, field_presenter} = this.props.data
 
     return (
       <div className="attendee-card">
-        {presenter &&
+        {field_presenter[0]['value'] &&
           <span className="-tag">Presenting</span>
         }
-        <h3>{`${firstName} ${lastName}`}</h3>
-        <p className="-bio">{bio}</p>
-        <p className="-id">Drupal.org ID: {dorgId}</p>
+        <h3>{`${field_firstname[0]['value']} ${field_lastname[0]['value']}`}</h3>
+        <p className="-bio">{field_bio[0]['value']}</p>
       </div>
     )
   }
 }
 
-AttendeesCard.propTypes = {
+AttendeeCard.propTypes = {
   id: PropTypes.number,
   name: PropTypes.string,
   dorgId: PropTypes.string,
@@ -26,4 +25,4 @@ AttendeesCard.propTypes = {
   presenter: PropTypes.bool
 };
 
-export default AttendeesCard;
+export default AttendeeCard;
