@@ -12,14 +12,13 @@ const mockStore = configureMockStore(middlewares)
 
 describe('Attendees actions', () => {
   it('creates GET_DATA_SUCCESS when fetching attendees has been done', () => {
-    let endpointId = 'attendees'
+    let endpointId = 'attendee'
     let endpoint = apiEndpoints[endpointId]
-
 
     var mock = new MockAdapter(axios);
     const data = mockedObject;
 
-    mock.onGet(config.apiURL + '/attendee').reply(200, data);
+    mock.onGet(endpoint.url).reply(200, data);
 
     const expectedActions = [
       { type: 'GET_DATA_PENDING' },
